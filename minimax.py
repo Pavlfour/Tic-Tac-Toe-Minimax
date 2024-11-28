@@ -10,9 +10,9 @@ pc = None
 human = None
 first = -1
 
-# This function below is needed because string is immutable
+# This function below is needed because strings are immutable
 def changeString(position,value):
-    
+
     global board
 
     board = list(board)
@@ -21,7 +21,9 @@ def changeString(position,value):
 
 
 def printTable():
+
     print(board[:3]+'\n'+board[3:6]+'\n'+board[6:]+'\n')
+
 
 def setGame():
     
@@ -33,17 +35,13 @@ def setGame():
             first = int(input("Who plays first?(You = 0, PC = 1): "))
             
         except:
-            print("Error")
-
-    if human == 'X':
-        pc = 'O'
-    else:
-        pc = 'X'
+            print("Invalid input!")
+    
+    pc = 'O' if human == 'X' else 'X'
 
 
 def win():
     
-    global pc,human,board
     # All possible winning states of the game
     winStates=[
          board[:3],
@@ -65,8 +63,6 @@ def win():
 
 
 def minimax(player):
-    
-    global pc,human,board
     
     if player == pc: # Maximizer
         best = [-1,-inf]
@@ -96,23 +92,21 @@ def minimax(player):
 
 
 def aiTurn():
-    
-    global pc,board
-    
+
     if not '-' in board or win():
         return
 
     sleep(1)
+
     if board.count('-') == 9:
         changeString(randint(0,8),pc)
     else:
         move = minimax(pc)
         changeString(move[0],pc)
 
+
 def playerTurn():
-    
-    global human,board
-    
+
     if not '-' in board or win():
         return
 
@@ -130,10 +124,10 @@ def playerTurn():
             print("Try again")
 
 
-# Initiate Game
+# Initiate game
 setGame()
 
-# Main loop of the Game
+# Main loop of the game
 while not win() and '-' in board:
     printTable()
     if not first:
@@ -147,9 +141,9 @@ while not win() and '-' in board:
 
 # Results
 if not win():
-    print("\nIt's a Draw!")
+    printTable()
+    print("It's a draw!")
+elif win()>0:
+    print("Ai took over the world!")
 else:
-    if win()>0:
-        print("Ai took over the world!")
-    else:
-        print("Mister lucky won!")
+    print("Mister lucky won!")
