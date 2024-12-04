@@ -9,6 +9,6 @@ I also tried to use the aplha-beta technique so that the program explores faster
 
 I think the code works correctly for the standard and the alpha-beta files.
 
-You will also find the first attemp to learn cpp which is not perfected.
+You will also find the first attempt to learn cpp which is not perfected.
 
 ---
