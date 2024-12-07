@@ -96,14 +96,14 @@ def minimax(player,alpha,beta):
             if player == pc:
                 if score[1] > best[1]:
                     best = score
-                alpha = max(alpha,score[1])
+                    alpha = max(alpha,score[1])
 
                 if beta <= alpha:
                     break
             else:
                 if score[1] < best[1]:
                     best = score
-                beta = min(beta,score[1])
+                    beta = min(beta,score[1])
                 if beta <= alpha:
                     break
     
