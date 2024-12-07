@@ -104,6 +104,7 @@ def minimax(player,alpha,beta):
                 if score[1] < best[1]:
                     best = score
                     beta = min(beta,score[1])
+
                 if beta <= alpha:
                     break
     
